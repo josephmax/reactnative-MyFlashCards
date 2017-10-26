@@ -65,4 +65,3 @@ export const clearLocalNotification = () => {
     .then(Notifications.cancelAllScheduledNotificationsAsync)
 }
 
-clearLocalNotification
