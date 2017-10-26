@@ -4,6 +4,7 @@ import { View, Text, ActivityIndicator, Dimensions, TouchableOpacity } from 'rea
 import { Card } from '../components'
 import { getDeck } from '../utils/api'
 import { red, matcha, blue } from '../utils/consts'
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 import styles from '../utils/styles'
 
 class Quiz extends Component {
@@ -20,11 +21,23 @@ class Quiz extends Component {
   }
 
   restart = () => {
+    this.dailyCompleted()
     this.setState({
       progress: 1,
       correct: 0,
       completed: false
     })
+  }
+
+  completedBack = () => {
+    const { navigation } = this.props
+    this.dailyCompleted()
+    navigation.goBack()
+  }
+
+  dailyCompleted = () => {
+    clearLocalNotification()
+    .then(setLocalNotification)
   }
 
   goNextQuestion = (bool) => {
@@ -79,14 +92,14 @@ class Quiz extends Component {
         {
           completed
           ? <View style={{flex: 2, justifyContent: 'center'}}>
-              <TouchableOpacity style={{flex: 1}} onPress={this.restart()}>
+              <TouchableOpacity style={{flex: 1}} onPress={this.restart}>
                 <View style={[styles.button, {backgroundColor: blue}]}>
                   <Text style={styles.buttonText}>
                     Restart Quiz
                   </Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity style={{flex: 1}} onPress={e => navigation.goBack()}>
+              <TouchableOpacity style={{flex: 1}} onPress={this.completedBack}>
                 <View style={[styles.button, {backgroundColor: blue}]}>
                   <Text style={styles.buttonText}>
                     Back To Deck

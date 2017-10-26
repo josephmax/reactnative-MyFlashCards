@@ -5,6 +5,7 @@ import { StackNavigator } from 'react-navigation'
 import { MyStatusBar } from './components'
 import { DeckDetail, AddCard, Quiz, Home } from './screens'
 import { white } from './utils/consts'
+import { setLocalNotification } from './utils/helpers'
 import styles from './utils/styles'
 import store from './store'
 

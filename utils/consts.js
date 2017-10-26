@@ -12,6 +12,7 @@ export const longInputWidth = Math.floor(width * 0.8)
 
 // storage key
 export const USER_DATA_STORAGE_KEY = 'MyFlashCards:data'
+export const NOTIFICATION_KEY = 'MyFlashCards:notifications'
 
 // action key
 export const UPDATE_DECK_LIST = 'UPDATE_DECK_LIST'
