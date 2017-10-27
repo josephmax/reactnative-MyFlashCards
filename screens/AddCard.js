@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { KeyboardAvoidingView, View, Text, TouchableOpacity, TextInput } from 'react-native'
+import { KeyboardAvoidingView, View, Text, TouchableOpacity, TextInput, Alert } from 'react-native'
 import { addCardToDeck } from '../utils/api'
 import { updateTargetDeck } from '../actions'
 import { red, longInputWidth } from '../utils/consts'
@@ -16,7 +16,19 @@ class AddCard extends Component {
     // valid
     let _valid = this.valid()
     if (!_valid.result) {
-      this[_valid.focus].focus()
+      Alert.alert(
+        'ATTENSION',
+        `Please Enter ${_valid.info.toUpperCase()} For Your Card`,
+        [
+          {
+            text: 'OK',
+            onPress: () => {
+              this[_valid.focus].focus()
+            }
+          },
+        ],
+        { cancelable: false }
+      )
       return
     }
     // prepare data to submit
@@ -44,12 +56,14 @@ class AddCard extends Component {
     if (!question) {
       return {
         result: false,
+        info: 'question',
         focus: 'questionEl'
       }
     }
     if (!answer) {
       return {
         result: false,
+        info: 'answer',
         focus: 'answerEl'
       }
     }
