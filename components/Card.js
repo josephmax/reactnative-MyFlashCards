@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Animated, TouchableOpacity } from 'react-native'
+import { View, Text, Animated, TouchableOpacity, Platform } from 'react-native'
 import FlipCard from 'react-native-flip-card'
 import styles from '../utils/styles'
 import { blue } from '../utils/consts'
@@ -23,6 +23,7 @@ class Card extends Component {
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <FlipCard flip={showAnswer}
+          perspective={Platform.OS === 'ios' ? 0 : 800}
           style={{borderWidth: 0}}
           friction={8}
           flipHorizontal={true}
