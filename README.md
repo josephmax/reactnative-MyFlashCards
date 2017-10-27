@@ -7,3 +7,30 @@ how to launch?
 5. use simulator or emulator or your own mobile device to view the app through expo.
 
 this project is tested on IOS simulator, IOS device and Android emulator.
+
+dependencies
+---
+- expo
+- react
+- react-native
+- react-native-flip-card
+- react-navigation
+- react-redux
+
+app description
+---
+- add Deck and show deck list
+
+- view deck details
+
+- add cards to decks
+
+- take quiz to view all the cards under a deck
+
+- score your learning by quiz
+
+- notification will be sent at 20:30 if none quiz is taken that day.
+
+- this app requires permissions to storage and notifications
+
+
