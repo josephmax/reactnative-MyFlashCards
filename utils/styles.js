@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { white , gray, blue, inputWidth, cardHeight, smallFontSize, subtitleFontSize, titleFontSize, btnFontSize } from './consts'
+import { white , gray, blue, mint, darkOrange, quizCardWidth, inputWidth, cardHeight, smallFontSize, subtitleFontSize, titleFontSize, btnFontSize } from './consts'
 
 export default StyleSheet.create({
   container: {
@@ -81,5 +81,19 @@ export default StyleSheet.create({
   },
   scoreText: {
     fontSize: subtitleFontSize
+  },
+  quizCard: {
+    flex: 1,
+    justifyContent: 'center',
+    width: quizCardWidth,
+    margin: 20,
+    borderRadius: 8,
+    borderWidth: 0
+  },
+  cardFace: {
+    backgroundColor: darkOrange
+  },
+  cardBack: {
+    backgroundColor: mint
   }
 })

@@ -7,6 +7,7 @@ export const subtitleFontSize = Math.floor(width / 15)
 export const smallFontSize = Math.floor(width / 18)
 export const btnFontSize = Math.floor(width / 15)
 export const cardHeight = Math.floor(height / 3)
+export const quizCardWidth = Math.floor(width * 0.8)
 export const inputWidth = Math.floor(width / 2)
 export const longInputWidth = Math.floor(width * 0.8)
 
