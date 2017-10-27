@@ -1,25 +1,20 @@
 import React, { Component } from 'react'
-import { View, Text, Animated, TouchableOpacity, Platform } from 'react-native'
+import { View, Text, TouchableOpacity, Platform } from 'react-native'
 import FlipCard from 'react-native-flip-card'
 import styles from '../utils/styles'
 import { blue } from '../utils/consts'
 
 class Card extends Component {
   state = {
-    showAnswer: false,
-    bounceValue: new Animated.Value(1)
+    showAnswer: false
   }
 
   componentWillReceiveProps () {
     this.setState({showAnswer: false})
   }
-  componentWillUnmount () {
-    const { bounceValue } = this.state
-    bounceValue.removeAllListeners()
-  }
   render () {
     const { data } = this.props
-    const { showAnswer, bounceValue } = this.state
+    const { showAnswer } = this.state
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <FlipCard flip={showAnswer}
