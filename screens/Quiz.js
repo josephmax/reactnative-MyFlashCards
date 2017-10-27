@@ -42,7 +42,6 @@ class Quiz extends Component {
 
   goNextQuestion = (bool) => {
     const { deckData } = this.state
-    console.log(deckData)
     let _questions = deckData.questions.filter(item => !item.deleted)
     this.setState(state => ({
       progress: state.progress + 1 > _questions.length

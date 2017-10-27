@@ -79,13 +79,16 @@ class DeckDetail extends Component {
             </Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={{flex: 1}} onPress={this.goQuiz}>
-          <View style={[styles.button, {backgroundColor: orange}]}>
-            <Text style={styles.buttonText}>
-              Start Quiz
-            </Text>
-          </View>
-        </TouchableOpacity>
+        {
+          _questions.length > 0 &&
+          <TouchableOpacity style={{flex: 1}} onPress={this.goQuiz}>
+            <View style={[styles.button, {backgroundColor: orange}]}>
+              <Text style={styles.buttonText}>
+                Start Quiz
+              </Text>
+            </View>
+          </TouchableOpacity>
+        }
       </View>
     )
   }
