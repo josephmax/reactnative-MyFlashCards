@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import { KeyboardAvoidingView, View, Text, TouchableOpacity, TextInput, Alert } from 'react-native'
 import { saveDeckTitle } from '../utils/api'
-import { fetchDeckList } from '../actions'
+import { updateTargetDeck } from '../actions'
 import { red } from '../utils/consts'
 import styles from '../utils/styles'
 
@@ -32,7 +31,7 @@ class AddDeck extends Component {
     }
     // prepare data to submit
     const { deckTitle } = this.state
-    const { navigation, xFetchDeckList } = this.props
+    const { navigation, updateTargetDeck } = this.props
     saveDeckTitle({
       title: deckTitle
     }).then(res => res.data)
@@ -41,8 +40,12 @@ class AddDeck extends Component {
           this.setState({
             deckTitle: ''
           })
-          xFetchDeckList()
-          navigation.navigate('DeckList')
+          res = res[Object.keys(res)]
+          updateTargetDeck(res)
+          navigation.navigate('DeckDetail', {
+            id: res.id,
+            title: res.title
+          })
         }
       })
   }
@@ -81,6 +84,6 @@ class AddDeck extends Component {
   }
 }
 
-export default connect(state => state, dispatch => bindActionCreators({
-  xFetchDeckList: fetchDeckList
-}, dispatch))(AddDeck)
+export default connect(state => state, {
+  updateTargetDeck
+})(AddDeck)

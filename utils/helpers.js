@@ -17,6 +17,27 @@ export const getDeckColor = (index) => {
   return colorPool[colorLoopIndex]
 }
 
+export const updateDataToList = (item, list) => {
+  let _list = jsonDeepClone(list)
+  let _item = jsonDeepClone(item)
+  let exists = false
+  _list.map(listItem => {
+    if (listItem.id === _item.id) {
+      exists = true
+      return _item
+    } else {
+      return listItem
+    }
+  })
+  if (!exists && item) {
+    _list.unshift(_item)
+  }
+  return _list
+}
+
+function jsonDeepClone(obj) {
+  return obj ? JSON.parse(JSON.stringify(obj)) : {}
+}
 
 export const setLocalNotification =  () => {
   AsyncStorage.getItem(NOTIFICATION_KEY)

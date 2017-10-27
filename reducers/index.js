@@ -1,4 +1,5 @@
 import { UPDATE_DECK_LIST, UPDATE_TARGET_DECK } from '../utils/consts'
+import { updateDataToList } from '../utils/helpers'
 
 const initState = {
   deckList: [],
@@ -12,7 +13,7 @@ const ACTION_HANDLER = {
   }),
   [UPDATE_TARGET_DECK]: (state, action) => ({
     ...state,
-    deckList: state.deckList.map(item => item.id === action.payload.id ? action.payload : item),
+    deckList: updateDataToList(action.payload, state.deckList),
     targetDeck: action.payload
   })
 }

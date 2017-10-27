@@ -7,7 +7,6 @@ export const getDecks = () => {
     return AsyncStorage.getItem(USER_DATA_STORAGE_KEY)
       .then(JSON.parse)
       .then(res => {
-        console.log(res)
         return res
       })
       .then(res => ({
@@ -45,7 +44,6 @@ export const saveDeckTitle = ({ title }) => {
       data: _deck,
       info: 'add deck succeed'
     }))
-    .then(getDecks)
     .catch(err => ({
       status: 500,
       data: null,
