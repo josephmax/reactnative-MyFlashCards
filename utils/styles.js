@@ -45,6 +45,7 @@ export default StyleSheet.create({
   },
   buttonText: {
     fontSize: btnFontSize,
+    alignSelf: 'center',
     color: white
   },
   loading: {
@@ -85,6 +86,7 @@ export default StyleSheet.create({
   quizCard: {
     flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
     width: quizCardWidth,
     margin: 20,
     borderRadius: 8,
